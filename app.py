@@ -167,7 +167,7 @@ def process_files(file1_path, file2_path, payment_type):
             # Save the output to an Excel file
             output_filename = f'{payment_type}_output.xlsx'
             output_file = os.path.join(app.config['RESULT_FOLDER'], output_filename)
-            with pd.ExcelWriter(output_file, xlsxwriter') as writer:
+            with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:
                 matched_data.to_excel(writer, sheet_name='Matched', index=False)
                 non_matching_data_df1.to_excel(writer, sheet_name='Non_Matching_File1', index=False)
                 non_matching_data_df2.to_excel(writer, sheet_name='Non_Matching_File2', index=False)
